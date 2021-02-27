@@ -74,7 +74,7 @@ def contar_valles(ListaInput):
 
     pass
 
-def saltando_rocas():
+def saltando_rocas(ListaInput):
     '''Mínimo número de saltos en las rocas
 
     Esta función hace parte de un juego en el que el jugador debe cruzar un río
@@ -88,9 +88,25 @@ def saltando_rocas():
     El objetivo es devolver el número mínimo de saltos que debe realizar el 
     jugador para ganar la partida
     '''
+    ContJumps=0
+    Posicion=0
+    
+    while Posicion < len(ListaInput)-2:
+
+      if ListaInput[Posicion+2]==0:
+        Posicion=Posicion+2
+        ContJumps=ContJumps+1
+      else:
+        Posicion=Posicion+1
+        ContJumps=ContJumps+1
+
+    if Posicion == len(ListaInput)-2:
+      ContJumps=ContJumps+1
+    return ContJumps
+
     pass
 
-def pares_medias():
+def pares_medias(ListaInput):
     '''Contar pares de medias
 
     Esta función debe recibir como argumento una lista de enteros. Cada elemento
@@ -99,8 +115,44 @@ def pares_medias():
     El objetivo de esta función es devolver un diccionario cuyas keys son cada 
     uno de los colores que se encuentren en la lista, y los valores son la 
     cantidad de pares que se han encontrado para cada color.
+    sacar medias que no tengan par del dic
     '''
+    Position=0
+    PrimerMedia=0
+    SegundaMedia=0
+    Tamanio=len(ListaInput)
+    Verificar=False
+    Diccionar={}
+    Key=0
+    
+
+    while Tamanio != 0:
+      Verificar=False
+      PrimerMedia=ListaInput[Position]
+
+      for i, elemento in enumerate(ListaInput):
+        if i==0:
+          continue
+        if ListaInput[i]==PrimerMedia:
+          SegundaMedia = i
+          Verificar=True
+          break
+        
+      if Verificar==True:
+        Aux = ListaInput.pop(SegundaMedia)
+        Aux = ListaInput.pop(Position)
+        Key=Diccionar.get(PrimerMedia, 0)
+        Key=Key+1
+        Diccionar[PrimerMedia] = Key
+      else:
+        Aux = ListaInput.pop(Position)
+      
+      Tamanio=len(ListaInput)
+    
+    return Diccionar
+
     pass
+
 
 # Crear una clase llamada `ListaComa` que reciba en su constructor un iterable
 # con el valor inicial para una lista que se guardará en un atributo llamado 
