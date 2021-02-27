@@ -159,8 +159,15 @@ def pares_medias(ListaInput):
 # `lista`. Implementar el método __str__ para que devuelva un string con todos
 # los elementos del atributo `lista` unidos a través de comas. Ejemplo:
 # si `lista` es [1,2,3,4], __str__ debe devolver '1,2,3,4'
+class ListaComa:
+  
+  def __init__(self,ListaInput):
+    self.Aux=""
+    for el in ListaInput:
+      self.Aux= self.Aux + "," + str(el)
 
-
+  def __str__(self):
+    return self.Aux[1:]
 
 
 # Crear una clase llamada `Persona` que reciba en su constructor como 1er 
