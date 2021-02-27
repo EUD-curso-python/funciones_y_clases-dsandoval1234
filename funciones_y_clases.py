@@ -1,3 +1,4 @@
+import random
 global1 = 34
 
 def cambiar_global(Var1):
@@ -34,9 +35,7 @@ def anio_bisiesto(anio):
 
     pass
 
-print (anio_bisiesto(1913))
-
-def contar_valles():
+def contar_valles(ListaInput):
     r'''Contar el número de valles
 
     Esta función debe recibir como argumento una lista de -1's, 0's y 1's, y lo 
@@ -54,6 +53,25 @@ def contar_valles():
     representados en la lista, que para el ejemplo que se acaba de mostrar es
     de 3 valles.
     '''
+    ContValles=0
+    for i, elemento in enumerate(ListaInput):
+      if i==0:
+        continue
+      else:
+        if ListaInput[i]==1 and ListaInput[i-1]==-1:
+          ContValles=ContValles+1
+        if ListaInput[i]==1 and ListaInput[i-1]==0:
+            x=i-1
+            while x != 0:
+              if ListaInput[x]==-1:
+                ContValles=ContValles+1
+                break
+              elif ListaInput[x]==1:
+                break
+              else:
+                x=x-1
+    return ContValles
+
     pass
 
 def saltando_rocas():
