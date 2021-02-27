@@ -1,4 +1,6 @@
 import random
+import datetime
+
 global1 = 34
 
 def cambiar_global(Var1):
@@ -223,3 +225,24 @@ class Persona:
 # si `fecha_nacimiento` es 1985-10-21 y la fecha actual es 2020-10-20, el método
 # `edad` debe devover 35.
 
+class Persona1(Persona):
+  
+  def __init__(self,ListaNombres,ListaApellidos,FecNacimiento):
+    Persona.__init__(self,ListaNombres,ListaApellidos)
+    self.ANacimiento=FecNacimiento.year
+    self.MNacimiento=FecNacimiento.month
+    self.DNacimiento=FecNacimiento.day
+    self.DiferenciaEdad = int(datetime.date.today().year) - int(self.ANacimiento)
+
+  def edad(self):
+    if self.MNacimiento < datetime.date.today().month:
+      self.DiferenciaEdad=self.DiferenciaEdad-1
+    elif self.MNacimiento == datetime.date.today().month:
+      if self.DNacimiento < datetime.date.today().day:
+        self.DiferenciaEdad=self.DiferenciaEdad-1
+  
+    return self.DiferenciaEdad
+
+Jose=Persona1(['Juan', 'David'], ['Torres', 'Salazar'],datetime.date(1985, 2, 27))
+x=int(Jose.edad())
+print(x)
