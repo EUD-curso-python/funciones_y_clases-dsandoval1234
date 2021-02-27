@@ -186,9 +186,31 @@ class ListaComa:
 # si `nombres` es ['Juan', 'David'] y `apellidos` es ['Torres', 'Salazar'],
 # el método `nombre completo` debe devolver  'Juan David Torres Salazar'
 
+class Persona:
+  
+  def __init__(self,ListaNombres,ListaApellidos):
+    self.NombreCompleto=""
+    self.nombres=ListaNombres
+    self.apellidos=ListaApellidos
 
 
+    for i, elemento in enumerate(self.nombres):
+      self.nombres[i]= str(self.nombres[i])
+      self.nombres[i]= self.nombres[i].capitalize() 
+    
+    for i, elemento in enumerate(self.apellidos):
+      self.apellidos[i]= str(self.apellidos[i])
+      self.apellidos[i]= self.apellidos[i].capitalize() 
 
+  def nombre_completo(self):
+    for el in self.nombres:
+      self.NombreCompleto=self.NombreCompleto + " " + el
+
+    for el in self.apellidos:
+      self.NombreCompleto=self.NombreCompleto + " " + el
+    
+    self.NombreCompleto=self.NombreCompleto.strip()
+    return self.NombreCompleto
 
 # Crear una clase llamada `Persona1` que herede de la clase `Persona`, y que en su
 # constructor reciba además de los atributos del padre, una variable tipo 
